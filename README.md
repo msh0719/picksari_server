@@ -5,7 +5,7 @@
 [서비스가이드]
 
 
-## [PICKSARI Server.ver] Spring Framework 이용
+- [PICKSARI Server.ver] Spring Framework 이용
 
 
 

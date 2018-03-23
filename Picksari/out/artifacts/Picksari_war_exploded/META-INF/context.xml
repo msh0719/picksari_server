@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" URIEncoding="EUC-KR"/>
+    <Connector port="8009" protocol="AJP/1.3" URIEncoding="EUC-KR"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</Context>

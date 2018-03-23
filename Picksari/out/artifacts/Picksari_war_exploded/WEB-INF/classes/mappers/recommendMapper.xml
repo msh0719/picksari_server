@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dev.picksari.musicMapper">
+    <select id="musicList" resultType="com.dev.picksari.Domain.musicVO">
+        SELECT * FROM music
+    </select>
+
+    <select id="octave_musicList" resultType="com.dev.picksari.Domain.musicVO">
+        SELECT * FROM music WHERE mOctave=#{mOctave}
+    </select>
+
+    <insert id="writeDao">
+        INSERT INTO board (mId, mWriter, mContent) VALUES (0, #{param1}, #{param2})
+    </insert>
+
+
+    <delete id="deleteDao">
+        DELETE FROM board WHERE mId = #{param1}
+    </delete>
+
+
+</mapper>

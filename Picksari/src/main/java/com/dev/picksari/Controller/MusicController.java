@@ -1,16 +1,18 @@
 package com.dev.picksari.Controller;
 
 import com.dev.picksari.Domain.musicVO;
+import com.dev.picksari.Persistence.MusicDao;
 import com.dev.picksari.Service.MusicService;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,28 +23,33 @@ public class musicController {
     @Inject
     private MusicService musicService;
 
+    @ResponseBody
     @RequestMapping("/list")
-    public String musiclistGet(Model model) throws Exception {
+    public List<musicVO> musiclistGet(Model model) throws Exception {
 
         logger.info("music list...");
 
         List<musicVO> musics = musicService.musicList();
-        model.addAttribute("musics", musics);
 
-        return "/list";
 
+        return musics;
     }
 
-    @RequestMapping(value = "/octave_list", method = RequestMethod.GET)
-    public String octave_musiclistGet(@RequestParam("mOctave") String mOctave, Model model) throws Exception {
+    @ResponseBody
+    @RequestMapping(value = "/octave_list", method = RequestMethod.POST)
+    public List<musicVO> octave_musiclistGet(@RequestBody musicVO mu) throws Exception {
 
         logger.info("find octave..");
-        List<musicVO> musics = musicService.octave_musicList(mOctave);
-        model.addAttribute("musics", musics);
+        List<musicVO> musics = musicService.octave_musicList(mu.getmOctave());
 
-        return "/octave_list";
+
+        return musics;
+    }
+
+    @RequestMapping(value = "/test")
+    public String test(){
+
+        return "hello world";
     }
 }
-
-
 

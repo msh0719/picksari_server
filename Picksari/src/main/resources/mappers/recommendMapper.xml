@@ -3,23 +3,25 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.dev.picksari.musicMapper">
-    <select id="musicList" resultType="com.dev.picksari.Domain.musicVO">
-        SELECT * FROM music
+<mapper namespace="com.dev.picksari.recommendMapper">
+    <select id="musicList" resultType="com.dev.picksari.Domain.MusicVO">
+        SELECT mName, mSinger, mOctave, mGenre FROM music
     </select>
 
-    <select id="octave_musicList" resultType="com.dev.picksari.Domain.musicVO">
-        SELECT * FROM music WHERE mOctave=#{mOctave}
+    <select id="octave_musicList" resultType="com.dev.picksari.Domain.MusicVO">
+        select m.mName, m.mSinger, m.mOctave, m.mGenre, m.mOctave
+        from music m, octave o where m.mOctave=o.mOctave and
+        o.mNum <![CDATA[ <= ]]> ( select mNum from octave where mOctave=#{mOctave})
     </select>
 
-    <insert id="writeDao">
-        INSERT INTO board (mId, mWriter, mContent) VALUES (0, #{param1}, #{param2})
-    </insert>
+    <select id="genre_musicList" resultType="com.dev.picksari.Domain.MusicVO">
+        select m.mName, m.mSinger, m.mOctave, m.mGenre, m.mOctave
+        from music m, octave o where m.mOctave=o.mOctave and
+        o.mNum <![CDATA[ <= ]]> ( select mNum from octave where mOctave=#{mOctave})
+    </select>
 
 
-    <delete id="deleteDao">
-        DELETE FROM board WHERE mId = #{param1}
-    </delete>
+
 
 
 </mapper>

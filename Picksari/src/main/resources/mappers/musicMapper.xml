@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dev.picksari.musicMapper">
+    <insert id="register_music">
+        insert into music
+        (mName, mSinger, mOctave, mGenre)
+        values (#{mName}, #{mSinger}, #{mOctave}, #{mGenre})
+    </insert>
+
+    <select id="check" resultType="int">
+        select count(*)
+        from music
+        where mName=#{mName} and mSinger=#{mSinger} and mOctave=#{mOctave} and mGenre=#{mGenre}
+    </select>
+</mapper>

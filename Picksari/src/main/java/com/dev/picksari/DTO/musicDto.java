@@ -49,7 +49,7 @@ public class musicDto {
 
     @Override
     public String toString() {
-        return "musicVO{" +
+        return "musicDto{" +
                 "mId=" + mId +
                 ", mName='" + mName + '\'' +
                 ", mSinger='" + mSinger + '\'' +

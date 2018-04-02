@@ -1,6 +1,6 @@
 package com.dev.picksari.Domain;
 
-public class musicVO {
+public class MusicVO {
 
     private int mId;
     private String mName;
@@ -47,6 +47,7 @@ public class musicVO {
     public void setmOctave(String mOctave) {
         this.mOctave = mOctave;
     }
+
 
     @Override
     public String toString() {

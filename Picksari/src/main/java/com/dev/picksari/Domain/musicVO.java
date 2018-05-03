@@ -51,7 +51,7 @@ public class MusicVO {
 
     @Override
     public String toString() {
-        return "musicVO{" +
+        return "MusicVO{" +
                 "mId=" + mId +
                 ", mName='" + mName + '\'' +
                 ", mSinger='" + mSinger + '\'' +
